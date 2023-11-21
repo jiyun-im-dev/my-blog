@@ -1,5 +1,6 @@
 package com.jiyun.myblog.controller;
 
+import com.jiyun.myblog.domain.User;
 import org.springframework.web.bind.annotation.*;
 
 // CRUD 처리용 컨트롤러
@@ -8,8 +9,14 @@ public class RESTController {
 
 	// GET: SELECT
 	@GetMapping("/my-blog")
-	public String httpGet() {
-		return "GET 요청 처리";
+	public User httpGet() {
+		User findUser = User.builder()
+				.id(1)
+				.username("soohyuni")
+				.password("1018")
+				.email("soohyuni@gmail.com")
+				.build();
+		return findUser;
 	}
 
 	// POST: INSERT
