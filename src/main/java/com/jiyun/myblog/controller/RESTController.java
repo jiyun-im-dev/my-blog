@@ -21,20 +21,20 @@ public class RESTController {
 
 	// POST: INSERT
 	@PostMapping("/my-blog")
-	public String httpPost() {
-		return "POST 요청 처리";
+	public String httpPost(@RequestBody User user) {
+		return "POST 요청 처리 입력값: " + user.toString();
 	}
 
 	// PUT: UPDATE
 	@PutMapping("/my-blog")
-	public String httpPut() {
-		return "PUT 요청 처리";
+	public String httpPut(@RequestBody User user) {
+		return "PUT 요청 처리 입력값: " + user.toString();
 	}
 
 	// DELETE: DELETE
 	@DeleteMapping("/my-blog")
-	public String httpDelete() {
-		return "DELETE 요청 처리";
+	public String httpDelete(@RequestParam int id) {
+		return "DELETE 요청 처리 입력값: " + id;
 	}
 
 }
