@@ -37,7 +37,7 @@ public class UserDao {
 		return mybatis.selectOne("getUser", user);
 	}
 
-	public List<User> getUserList(User user) {
+	public List<User> getUserList() {
 		return mybatis.selectList("getUserList");
 	}
 
