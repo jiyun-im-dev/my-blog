@@ -18,9 +18,16 @@ spring:
     url: jdbc:h2:tcp://localhost/~/test
     username: sa
     password:
+  # JPA 설정
   jpa:
+    open-in-view: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
     hibernate:
       ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
