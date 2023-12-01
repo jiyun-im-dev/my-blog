@@ -21,7 +21,7 @@ spring:
   # JPA 설정
   jpa:
     open-in-view: true
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.H2Dialect # JPA가 생성할 SQL을 어떤 DBMS에 최적화할 것인지
     show-sql: true
     properties:
       hibernate:
@@ -30,4 +30,6 @@ spring:
     hibernate:
       ddl-auto: update
       naming:
+        # 엔티티의 변수 이름과 테이블의 컬럼 이름을 동일하게 유지
+        # e.g. createDate 변수와 매핑되는 컬럼 이름을 CREATE_DATE로 처리
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
