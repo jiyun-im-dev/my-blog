@@ -6,6 +6,7 @@ import com.jiyun.myblog.exception.MyBlogException;
 import com.jiyun.myblog.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -30,6 +31,18 @@ public class UserController {
 		user.setRole(RoleType.USER);
 		userRepository.save(user);
 		return user.getUsername() + "회원가입 성공";
+	}
+
+	@Transactional // 원래는 서비스 클래스에서 리포지토리를 호출하고 서비스 메서드에 애노테이션 적용해야 함
+	@PutMapping("/user")
+	public @ResponseBody String updateUser(@RequestBody User user) {
+		User findUser = userRepository.findById(user.getId()).orElseThrow(() -> {
+			return new MyBlogException(user.getId() + "번 회원이 없습니다.");
+		});
+		findUser.setUsername(user.getUsername());
+		findUser.setPassword(user.getPassword());
+		findUser.setEmail(user.getEmail());
+		return user.getId() + "번 회원 정보 수정 완료";
 	}
 
 }
