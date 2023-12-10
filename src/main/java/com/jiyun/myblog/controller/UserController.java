@@ -33,7 +33,7 @@ public class UserController {
 		return user.getUsername() + "회원가입 성공";
 	}
 
-	@Transactional // 원래는 서비스 클래스에서 리포지토리를 호출하고 서비스 메서드에 애노테이션 적용해야 함
+	@Transactional // 원래는 서비스 클래스에서 리포지토리를 호출하고 서비스 메서드에 어노테이션 적용해야 함
 	@PutMapping("/user")
 	public @ResponseBody String updateUser(@RequestBody User user) {
 		User findUser = userRepository.findById(user.getId()).orElseThrow(() -> {
@@ -43,6 +43,12 @@ public class UserController {
 		findUser.setPassword(user.getPassword());
 		findUser.setEmail(user.getEmail());
 		return user.getId() + "번 회원 정보 수정 완료";
+	}
+
+	@DeleteMapping("/user/{id}")
+	public @ResponseBody String deleteUser(@PathVariable int id) {
+		userRepository.deleteById(id);
+		return id + "번 회원 삭제됨";
 	}
 
 }
