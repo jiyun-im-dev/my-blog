@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -22,6 +24,11 @@ public class UserController {
 		// 추상 메서드가 하나만 있는 인터페이스는 람다식으로 표현 가능
 		return userRepository.findById(id).orElseThrow(
 				() -> new MyBlogException(id + "번 회원이 없습니다."));
+	}
+
+	@GetMapping("/user/list")
+	public @ResponseBody List<User> getUserList() {
+		return userRepository.findAll();
 	}
 
 	// 테스트를 위해 서비스 객체가 아닌 컨트롤러에서 리포지터리 사용
