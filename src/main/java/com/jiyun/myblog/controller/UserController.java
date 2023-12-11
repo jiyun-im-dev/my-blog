@@ -5,6 +5,10 @@ import com.jiyun.myblog.domain.User;
 import com.jiyun.myblog.exception.MyBlogException;
 import com.jiyun.myblog.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +33,14 @@ public class UserController {
 	@GetMapping("/user/list")
 	public @ResponseBody List<User> getUserList() {
 		return userRepository.findAll();
+	}
+
+	@GetMapping("/user/page/{page}")
+	public @ResponseBody Page<User> getUserListPaging(@PathVariable int page) {
+		// page 파라미터에 해당하는 2개(=pageSize)의 데이터 조회
+		// id와 username 내림차순 정렬
+		Pageable pageable = PageRequest.of(page, 2, Sort.Direction.DESC, "id", "username");
+		return userRepository.findAll(pageable);
 	}
 
 	// 테스트를 위해 서비스 객체가 아닌 컨트롤러에서 리포지터리 사용
