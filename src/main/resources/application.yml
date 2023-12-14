@@ -10,7 +10,7 @@ server:
 spring:
   mvc:
     view:
-      prefix: /WEB-INF/my-blog
+      prefix: /WEB-INF/my-blog/
       suffix: .jsp
   # 데이터소스 설정
   datasource:
