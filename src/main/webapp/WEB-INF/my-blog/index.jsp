@@ -13,20 +13,17 @@
 
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+      <a class="navbar-brand" href="/">Main</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)">Link</a>
+            <a class="nav-link" href="/auth/login">로그인</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)">Link</a>
+            <a class="nav-link" href="/auth/insertUser">회원가입</a>
           </li>
         </ul>
         <form class="d-flex">
@@ -40,6 +37,21 @@
   <div class="container-fluid mt-3">
     <h3>Navbar Forms</h3>
     <p>You can also include forms inside the navigation bar.</p>
+  </div>
+
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">포스트 제목</h4>
+        <p class="card-text">포스트 내용</p>
+        <button class="btn btn-secondary" type="button">상세보기</button>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="mt-5 p-4 text-center">
+    <p>Created by IM JI YUN</p>
   </div>
 
 </body>
