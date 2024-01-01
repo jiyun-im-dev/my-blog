@@ -20,7 +20,10 @@
         <label for="pwd">Password: </label>
         <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
       </div>
-      <button type="submit" class="btn btn-primary">회원가입</button>
+      <button id="btn-save" class="btn btn-primary">회원가입</button>
     </form>
   </div>
+
+  <script src="/js/user.js"></script>
+
 <%@ include file="../layout/footer.jsp" %>
