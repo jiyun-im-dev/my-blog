@@ -6,7 +6,9 @@
 </head>
 <body>
   <%@ include file="../layout/header.jsp" %>
+
   <div class="container mt-3">
+
     <form action="/action_page.php">
       <div class="mb-3 mt-3">
         <label for="email">Email:</label>
@@ -20,10 +22,11 @@
         <label for="pwd">Password: </label>
         <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
       </div>
-      <button id="btn-save" class="btn btn-primary">회원가입</button>
     </form>
+
+    <button id="btn-save" class="btn btn-primary">회원가입</button>
   </div>
 
   <script src="/js/user.js"></script>
-
-<%@ include file="../layout/footer.jsp" %>
+  <%@ include file="../layout/footer.jsp" %>
+</body>
