@@ -19,4 +19,13 @@ public class UserService {
 		userRepository.save(user);
 	}
 
+	@Transactional(readOnly = true)
+	public User getUser(String username) {
+		// 검색 결과가 없을 때 빈 User 객체 반환
+		User findUser = userRepository.findByUsername(username).orElseGet(() -> {
+			return new User();
+		});
+		return findUser;
+	}
+
 }

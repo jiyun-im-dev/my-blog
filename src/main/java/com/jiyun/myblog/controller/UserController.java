@@ -24,9 +24,16 @@ public class UserController {
 
 	@PostMapping("/auth/insertUser")
 	public @ResponseBody ResponseDTO<?> insertUser(@RequestBody User user) {
-		userService.insertUser(user);
-		return new ResponseDTO<>(HttpStatus.OK.value(),
-				user.getUsername() + "님 회원가입이 완료되었습니다.");
+		User findUser = userService.getUser(user.getUsername());
+
+		if (findUser.getUsername() == null) {
+			userService.insertUser(user);
+			return new ResponseDTO<>(HttpStatus.OK.value(),
+					user.getUsername() + "님 회원가입이 완료되었습니다.");
+		} else {
+			return new ResponseDTO<>(HttpStatus.BAD_REQUEST.value(),
+					user.getUsername() + "님은 이미 회원입니다.");
+		}
 	}
 
 }
